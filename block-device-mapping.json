@@ -1,0 +1,9 @@
+[
+  {
+    "DeviceName": "/dev/xvda1",
+    "Ebs": {
+      "VolumeSize": 15,
+      "VolumeType": "gp2"
+    }
+  }
+]
