@@ -51,8 +51,7 @@ In cases where you have an existing server set-up (e.g. configuration) follow th
 
 If you have an existing database (MySQL backup `*.sql`) that you want to use, thereby overriding the installation default, you will need to manually run the server launch operations using the following workflow:
 
-    $ docker pull marcsbrooks/docker-opensimulator-server
-    $ docker run -d <image-id> sleep infinity
+    $ docker run -d -p 9000:9000/tcp -p 9000:9000/udp marcsbrooks/docker-opensimulator-server:latest sleep infinity
     $ docker cp <filename>.sql <container-id>:/tmp/opensim.sql
     $ docker exec -d <container-id> /usr/games/launch.sh
 
