@@ -33,6 +33,20 @@ The following command can be executed within the Docker container:
 
     $ service grid-server {start|stop|restart}
 
+## Overriding grid server sources
+
+In cases where you have an existing server set-up (e.g. configuration) follow the steps below:
+
+### Copy the files to the container
+
+    $ docker cp OpenSim.ini <container-id>:/usr/games/OpenSim.ini
+    $ docker cp Region.ini <container-id>:/usr/games/Regions/Region.ini
+    ..
+
+### Restart the grid server
+
+    $ docker -it <container-id> /usr/sbin/service grid-server restart
+
 ## Importing a custom database
 
 If you have an existing database (MySQL backup `*.sql`) that you want to use, thereby overriding the installation default, you will need to manually run the server launch operations using the following workflow:
