@@ -33,6 +33,17 @@ The following command can be executed within the Docker container:
 
     $ service grid-server {start|stop|restart}
 
+## Importing a custom database
+
+If you have an existing database (MySQL backup `*.sql`) that you want to use, thereby overriding the installation default, you will need to manually run the server launch operations using the following workflow:
+
+    $ docker pull marcsbrooks/docker-opensimulator-server
+    $ docker run -d <image-id> sleep infinity
+    $ docker cp <filename>.sql <container-id>:/tmp/opensim.sql
+    $ docker exec -d <container-id> /usr/games/launch.sh
+
+Please note the configured [OpenSim release version](http://opensimulator.org/wiki/Upgrading) since older databases may introduce backwards compatibility issues.
+
 ## Contributions
 
 If you fix a bug, or have a code you want to contribute, please send a pull-request with your changes.
