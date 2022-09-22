@@ -10,6 +10,8 @@
 #   - This script has been tested to work with RHEL & CentOS
 #   - This script must be run as root
 
+IP_ADDR=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
+
 # Install dependencies.
 yum -y install https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
 
@@ -28,4 +30,4 @@ if [ -f /swapfile ]; then
 fi
 
 # Launch the grid server.
-docker run -d --network host --restart always marcsbrooks/docker-opensimulator-server:latest
+docker run -d --network host --env EXTERNAL_IP=$IP_ADDR --restart always marcsbrooks/docker-opensimulator-server:latest
